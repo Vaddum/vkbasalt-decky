@@ -39,7 +39,7 @@ Requires [Decky Loader](https://decky.xyz/) to already be installed.
 - **Sharpening** (0.0-1.0, default: 0.5): Sharpening strength
 - **Denoise** (0.0-1.0, default: 0.17): Noise reduction
 
-### Supported External Effects (ReShade)
+### Supported External Effects
 
 #### Light Effects 🟢
 - **Border**: Adds customizable borders to fix edges
