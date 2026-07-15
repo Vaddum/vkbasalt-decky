@@ -83,7 +83,7 @@ Requires [Decky Loader](https://decky.xyz/) to already be installed.
 
 **Toggle Effects**: Press the configured key (default: Home)
 
-Effects activate in real-time, no restart required.
+Effects activate in real-time, but a game restart is needed.
 
 ## File Locations
 
