@@ -1,11 +1,11 @@
 {
-  "name": "Example Plugin",
-  "author": "John Doe",
-  "flags": ["debug", "_root"],
+  "name": "vkBasalt Manager",
+  "author": "Vaddum",
+  "flags": [],
   "api_version": 1,
   "publish": {
-    "tags": ["template", "root"],
-    "description": "Decky example plugin.",
-    "image": "https://opengraph.githubassets.com/1/SteamDeckHomebrew/PluginLoader"
+    "tags": ["utility", "graphics", "shaders"],
+    "description": "Install and configure vkBasalt (Vulkan post-processing effects / ReShade) directly from the Quick Access Menu.",
+    "image": "vkbasalt-manager.png"
   }
 }
