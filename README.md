@@ -1,99 +1,83 @@
-# Decky Plugin Template [![Chat](https://img.shields.io/badge/chat-on%20discord-7289da.svg)](https://deckbrew.xyz/discord)
+# vkBasalt Manager — Decky Loader Plugin
 
-Reference example for using [decky-frontend-lib](https://github.com/SteamDeckHomebrew/decky-frontend-lib) (@decky/ui) in a [decky-loader](https://github.com/SteamDeckHomebrew/decky-loader) plugin.
+Manage [vkBasalt](https://github.com/DadSchoorse/vkBasalt) directly from the Quick Access Menu on Steam Deck: install it, toggle its post-processing effects, and adjust their parameters — no terminal required.
 
-### **Please also refer to the [wiki](https://wiki.deckbrew.xyz/en/user-guide/home#plugin-development) for important information on plugin development and submissions/updates. currently documentation is split between this README and the wiki which is something we are hoping to rectify in the future.**  
+## Features
 
-## Developers
+- One-click install/uninstall of vkBasalt (64 and 32-bit) from the Chaotic-AUR mirror
+- Toggle built-in effects: **CAS**, **FXAA**, **SMAA**, **DLS**, with adjustable sliders (sharpness, thresholds, denoise...)
+- Toggle any external ReShade `.fx` shader dropped into `~/.config/reshade/Shaders`
+- Configurable toggle key (default: `Home`)
+- Per-game activation: copy `ENABLE_VKBASALT=1 %command%` straight to clipboard for pasting into a game's launch options
 
-### Dependencies
+## Requirements
 
-This template relies on the user having Node.js v16.14+ and `pnpm` (v9) installed on their system.  
-Please make sure to install pnpm v9 to prevent issues with CI during plugin submission.  
-`pnpm` can be downloaded from `npm` itself which is recommended.
+- [Decky Loader](https://decky.xyz/) installed on your Steam Deck
+- Internet connection (to fetch vkBasalt and the bundled ReShade shaders)
+- `wget`, `curl`, `tar`, `unzip` (present by default on SteamOS)
+- [Node.js](https://nodejs.org/) + [pnpm](https://pnpm.io/) to build the plugin (see below)
 
-#### Linux
+## Building
+
+This plugin is built on top of the official [decky-plugin-template](https://github.com/SteamDeckHomebrew/decky-plugin-template).
+
+1. Use the template to create your own repo (or clone it directly), then copy this plugin's `main.py`, `plugin.json`, and `src/index.tsx` into it, overwriting the template's versions.
+2. Install dependencies and build:
+   ```bash
+   pnpm i
+   pnpm run build
+   ```
+   This produces `dist/index.js`.
+
+If `pnpm`/Node.js aren't available on your Deck and you'd rather build there than on a separate machine, install them without touching the read-only system partition:
+```bash
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.5/install.sh | bash
+source ~/.bashrc
+nvm install --lts
+corepack enable
+corepack prepare pnpm@latest --activate
+```
+
+## Installing on the Deck
+
+Build a clean install package (don't just zip the whole dev folder — it needs this exact structure):
 
 ```bash
-sudo npm i -g pnpm@9
+rm -rf /tmp/vkbasalt-manager
+mkdir -p /tmp/vkbasalt-manager/dist
+cp dist/index.js /tmp/vkbasalt-manager/dist/
+cp plugin.json package.json main.py /tmp/vkbasalt-manager/
+cd /tmp && zip -r vkbasalt-manager.zip vkbasalt-manager
 ```
 
-If you would like to build plugins that have their own custom backends, Docker is required as it is used by the Decky CLI tool.
+Then in Gaming Mode: Quick Access Menu → **Settings** → **Developer** → **Install Plugin from ZIP File** → select `vkbasalt-manager.zip`.
 
-### Making your own plugin
-
-1. You can fork this repo or utilize the "Use this template" button on Github.
-2. In your local fork/own plugin-repository run these commands:
-   1. ``pnpm i``
-   2. ``pnpm run build``
-   - These setup pnpm and build the frontend code for testing.
-3. Consult the [decky-frontend-lib](https://github.com/SteamDeckHomebrew/decky-frontend-lib) repository for ways to accomplish your tasks.
-   - Documentation and examples are still rough, 
-   - Decky loader primarily targets Steam Deck hardware so keep this in mind when developing your plugin.
-4. If using VSCodium/VSCode, run the `setup` and `build` and `deploy` tasks. If not using VSCodium etc. you can derive your own makefile or just manually utilize the scripts for these commands as you see fit.
-
-If you use VSCode or it's derivatives (we suggest [VSCodium](https://vscodium.com/)!) just run the `setup` and `build` tasks. It's really that simple.
-
-#### Other important information
-
-Everytime you change the frontend code (`index.tsx` etc) you will need to rebuild using the commands from step 2 above or the build task if you're using vscode or a derivative.
-
-Note: If you are receiving build errors due to an out of date library, you should run this command inside of your repository:
-
+Alternatively, copy `plugin.json`, `package.json`, `main.py`, and `dist/index.js` directly into `~/homebrew/plugins/vkbasalt-manager/` on the Deck and restart the plugin loader:
 ```bash
-pnpm update @decky/ui --latest
+sudo systemctl restart plugin_loader
 ```
 
-### Backend support
+## Usage
 
-If you are developing with a backend for a plugin and would like to submit it to the [decky-plugin-database](https://github.com/SteamDeckHomebrew/decky-plugin-database) you will need to have all backend code located in ``backend/src``, with backend being located in the root of your git repository.
-When building your plugin, the source code will be built and any finished binary or binaries will be output to ``backend/out`` (which is created during CI.)
-If your buildscript, makefile or any other build method does not place the binary files in the ``backend/out`` directory they will not be properly picked up during CI and your plugin will not have the required binaries included for distribution.
+1. Open the plugin from the Quick Access Menu and install vkBasalt.
+2. Enable the effects you want and adjust their sliders if needed.
+3. Tap **Copy `ENABLE_VKBASALT=1 %command%`** and paste it into the target game's **Launch Options** (Steam → game Properties → General).
+4. Launch the game. Press the toggle key (`Home` by default) in-game to enable/disable effects on the fly.
+5. Use **Uninstall vkBasalt** from the plugin to remove everything (libraries, Vulkan layer registration, config) without touching your games or Steam settings.
 
-Example:  
-In our makefile used to demonstrate the CI process of building and distributing a plugin backend, note that the makefile explicitly creates the `out` folder (``backend/out``) and then compiles the binary into that folder. Here's the relevant snippet.
+## Troubleshooting
 
-```make
-hello:
-	mkdir -p ./out
-	gcc -o ./out/hello ./src/main.c
-```
+- **"Could not reach the AUR mirror" / empty response** — check your internet connection; the Chaotic-AUR mirror may also be temporarily unavailable. The plugin sends a browser-like User-Agent to avoid being blocked by anti-bot mirror rules.
+- **`OPENSSL_x.x.x not found` errors in the plugin's log** — this comes from Decky's own PyInstaller-bundled backend leaking its `LD_LIBRARY_PATH` into subprocess calls. The plugin strips it before calling `curl`/`wget`/`tar`, so this shouldn't occur; if it does on your setup, check `~/homebrew/logs/vkbasalt-manager/` for the exact error.
+- **A custom ReShade shader causes a black screen** — check vkBasalt's own logs by adding `VKBASALT_LOG_LEVEL=trace %command% > ~/vkbasalt.log 2>&1` as a launch option, then inspect `~/vkbasalt.log` for compiler errors. Not all ReShade FX syntax is supported by vkBasalt's bundled shader compiler.
 
-The CI does create the `out` folder itself but we recommend creating it yourself if possible during your build process to ensure the build process goes smoothly.
+## Credits
 
-Note: When locally building your plugin it will be placed into a folder called 'out' this is different from the concept described above.
+- [vkBasalt](https://github.com/DadSchoorse/vkBasalt) by DadSchoorse
+- [ReShade](https://reshade.me/) and its shader ecosystem
+- [Decky Loader](https://decky.xyz/), `@decky/ui`, and `@decky/api`
+- Ported from the original [vkbasalt_manager.sh](https://github.com/Vaddum/vkbasalt-manager) script
 
-The out folder is not sent to the final plugin, but is then put into a ``bin`` folder which is found at the root of the plugin's directory.  
-More information on the bin folder can be found below in the distribution section below.
+## License
 
-### Distribution
-
-We recommend following the instructions found in the [decky-plugin-database](https://github.com/SteamDeckHomebrew/decky-plugin-database) on how to get your plugin up on the plugin store. This is the best way to get your plugin in front of users.
-You can also choose to do distribution via a zip file containing the needed files, if that zip file is uploaded to a URL it can then be downloaded and installed via decky-loader.
-
-Layout of a plugin zip ready for distribution:
-```
-pluginname-v1.0.0.zip (version number is optional but recommended for users sake)
-   |
-   pluginname/ <directory>
-   |  |  |
-   |  |  bin/ <directory> (optional)
-   |  |     |
-   |  |     binary (optional)
-   |  |
-   |  dist/ <directory> [required]
-   |      |
-   |      index.js [required]
-   | 
-   package.json [required]
-   plugin.json [required]
-   main.py {required if you are using the python backend of decky-loader: serverAPI}
-   README.md (optional but recommended)
-   LICENSE(.md) [required, filename should be roughly similar, suffix not needed]
-```
-
-Note regarding licenses: Including a license is required for the plugin store if your chosen license requires the license to be included alongside usage of source-code/binaries!
-
-Standard procedure for licenses is to have your chosen license at the top of the file, and to leave the original license for the plugin-template at the bottom. If this is not the case on submission to the plugin database, you will be asked to fix this discrepancy.
-
-We cannot and will not distribute your plugin on the Plugin Store if it's license requires it's inclusion but you have not included a license to be re-distributed with your plugin in the root of your git repository.
+MIT (adjust to match your repo's actual license).
