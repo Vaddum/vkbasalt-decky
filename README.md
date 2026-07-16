@@ -21,7 +21,7 @@ Requires [Decky Loader](https://decky.xyz/) to already be installed.
 - **Toggle Key**: Customizable in-game hotkey
 - **Per-Game Activation**: Copy `ENABLE_VKBASALT=1 %command%` straight to clipboard for a game's launch options
 
-### vkBasalt Built-in Effects 🔵
+### vkBasalt Built-in Effects 🟦
 
 #### CAS
 - **Sharpness** (0.0-1.0, default: 0.4): Sharpening intensity
@@ -39,37 +39,51 @@ Requires [Decky Loader](https://decky.xyz/) to already be installed.
 - **Sharpening** (0.0-1.0, default: 0.5): Sharpening strength
 - **Denoise** (0.0-1.0, default: 0.17): Noise reduction
 
-### Supported External Effects
+### Supported External Effects (ReShade)
 
-#### Light Effects 🟢
-- **Border**: Adds customizable borders to fix edges
+#### Light Effects 🟩
+- **Border**: Customizable borders to fix image edges
+- **ColorMatrix**: Color grading via a custom 4x4 color transformation matrix
+- **Colourfulness**: Perceptual colorfulness boost, an alternative to Vibrance
 - **Curves**: S-curve contrast without clipping
 - **Daltonize**: Color blindness correction filter
-- **Defring**: Removes chromatic aberration/fringing
-- **Levels**: Adjusts black/white point range
-- **LiftGammaGain**: Professional shadows/midtones/highlights tool
+- **Defring**: Removes chromatic aberration
+- **FilmicPass**: Filmic tone mapping pass for a cinematic look
+- **HSLShift**: Shifts hue, saturation, and lightness
+- **Levels**: Adjusts black/white points
+- **LevelsPlus**: Extended version of Levels with additional controls
+- **LiftGammaGain**: Pro shadows/midtones/highlights tool
 - **Monochrome**: Black & white conversion with film presets
-- **Sepia**: Vintage sepia tone effect
-- **Technicolor**: Classic vibrant film process look
-- **Tonemap**: Comprehensive tone mapping controls
-- **Vibrance**: Smart saturation enhancement tool
+- **Sepia**: Vintage sepia effect
+- **SmartVibrance**: Saturation boost with skin-tone protection
+- **Technicolor**: Classic vibrant film look
+- **Technicolor2**: Alternate take on the three-strip Technicolor look
+- **Tonemap**: Full tone mapping controls
+- **Vibrance**: Smart saturation boost
 
-#### Medium Effects 🟠
+#### Medium Effects 🟧
 - **AdaptiveSharpen**: Smart edge-aware sharpening with minimal artifacts
-- **Cartoon**: Creates cartoon-like edge enhancement
-- **DPX**: Film-style color grading effect
-- **FilmGrain**: Adds realistic film grain noise
+- **Cartoon**: Cartoon-like edge enhancement
+- **Comic**: Comic book style edge lines and halftone shading
+- **DPX**: Film-style color grading
+- **FilmGrain**: Adds realistic film grain
+- **FilmGrain2**: Updated film grain effect with more controls
+- **FilmicAnamorphSharpen**: Sharpening with an anamorphic lens-flare style streak
+- **GaussianBlur**: Standard Gaussian blur
+- **HighPassSharpen**: Sharpening based on a high-pass filter
 - **LumaSharpen**: Luminance-based detail enhancement
-- **Nostalgia**: Retro gaming visual style emulation
-- **SuperEagle**: Diagonal smoothing for pixel art, keeps text sharp
-- **Vignette**: Darkened edges camera lens effect
+- **Nostalgia**: Retro gaming visual style
+- **Vignette**: Darkened edges, camera lens effect
 
-#### Heavy Effects 🔴
+#### Heavy Effects 🟥
 - **4xBRZ**: Complex pixel art upscaling for retro games
 - **Clarity**: Advanced sharpening with blur masking
-- **CRT**: Simulates old CRT monitor appearance
-- **FakeHDR**: Simulates HDR with bloom effects
-- **SmartSharp**: Depth-aware intelligent sharpening
+- **CRT**: Simulates an old CRT monitor
+- **FakeHDR**: Simulates HDR with bloom
+- **HQ4X**: HQ4x pixel art upscaling for retro games
+- **SmartSharp**: Depth-aware smart sharpening
+
+Note: **Comic**, **FilmicAnamorphSharpen**, and **SmartSharp** use the scene depth buffer. The plugin enables vkBasalt's `depthCapture` automatically whenever one of them is active, and disables it otherwise — no manual setting needed.
 
 ## Usage
 
@@ -83,7 +97,7 @@ Requires [Decky Loader](https://decky.xyz/) to already be installed.
 
 **Toggle Effects**: Press the configured key (default: Home)
 
-Effects activate in real-time, but a game restart is needed.
+Effects activate in real-time, no restart required.
 
 ## File Locations
 
@@ -125,7 +139,7 @@ corepack prepare pnpm@latest --activate
 
 **Installation fails / "Could not reach the AUR mirror"**: Verify your internet connection; the Chaotic-AUR mirror may also be temporarily unavailable
 
-**Performance drops**: Disable heavy effects (🔴)
+**Performance drops**: Disable heavy effects (🟥)
 
 **Toggle key not working**: Change the key in the plugin's Settings section
 
@@ -133,4 +147,4 @@ corepack prepare pnpm@latest --activate
 
 ## About
 
-Decky Loader plugin port of [vkbasalt-manager](https://github.com/Vaddum/vkbasalt-manager), a GUI for managing vkBasalt on SteamOS.
+Decky Loader plugin port of [vkbasalt-manager](https://github.com/Vaddum/vkbasalt-manager), a GUI for managing vkBasalt on Steam Deck.
