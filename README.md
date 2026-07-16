@@ -133,4 +133,4 @@ corepack prepare pnpm@latest --activate
 
 ## About
 
-Decky Loader plugin port of [vkbasalt-manager](https://github.com/Vaddum/vkbasalt-manager), a GUI for managing vkBasalt on Steam Deck.
+Decky Loader plugin port of [vkbasalt-manager](https://github.com/Vaddum/vkbasalt-manager), a GUI for managing vkBasalt on SteamOS.
