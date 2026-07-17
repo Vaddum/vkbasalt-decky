@@ -44,15 +44,10 @@ Requires [Decky Loader](https://decky.xyz/) to already be installed.
 #### Light Effects 🟩
 - **Border**: Customizable borders to fix image edges
 - **ColorMatrix**: Color grading via a custom 4x4 color transformation matrix
-- **Colourfulness**: Perceptual colorfulness boost, an alternative to Vibrance
 - **Curves**: S-curve contrast without clipping
 - **Daltonize**: Color blindness correction filter
 - **Defring**: Removes chromatic aberration
 - **FilmicPass**: Filmic tone mapping pass for a cinematic look
-- **HSLShift**: Shifts hue, saturation, and lightness
-- **Levels**: Adjusts black/white points
-- **LevelsPlus**: Extended version of Levels with additional controls
-- **LiftGammaGain**: Pro shadows/midtones/highlights tool
 - **Monochrome**: Black & white conversion with film presets
 - **Sepia**: Vintage sepia effect
 - **SmartVibrance**: Saturation boost with skin-tone protection
@@ -66,11 +61,8 @@ Requires [Decky Loader](https://decky.xyz/) to already be installed.
 - **Cartoon**: Cartoon-like edge enhancement
 - **Comic**: Comic book style edge lines and halftone shading
 - **DPX**: Film-style color grading
-- **FilmGrain**: Adds realistic film grain
-- **FilmGrain2**: Updated film grain effect with more controls
 - **FilmicAnamorphSharpen**: Sharpening with an anamorphic lens-flare style streak
 - **GaussianBlur**: Standard Gaussian blur
-- **HighPassSharpen**: Sharpening based on a high-pass filter
 - **LumaSharpen**: Luminance-based detail enhancement
 - **Nostalgia**: Retro gaming visual style
 - **Vignette**: Darkened edges, camera lens effect
@@ -81,9 +73,8 @@ Requires [Decky Loader](https://decky.xyz/) to already be installed.
 - **CRT**: Simulates an old CRT monitor
 - **FakeHDR**: Simulates HDR with bloom
 - **HQ4X**: HQ4x pixel art upscaling for retro games
-- **SmartSharp**: Depth-aware smart sharpening
 
-Note: **Comic**, **FilmicAnamorphSharpen**, and **SmartSharp** use the scene depth buffer. The plugin enables vkBasalt's `depthCapture` automatically whenever one of them is active, and disables it otherwise — no manual setting needed.
+Note: **Comic** and **FilmicAnamorphSharpen** use the scene depth buffer. The plugin enables vkBasalt's `depthCapture` automatically whenever one of them is active, and disables it otherwise — no manual setting needed.
 
 ## Usage
 
