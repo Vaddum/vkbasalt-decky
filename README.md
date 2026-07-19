@@ -17,7 +17,7 @@ Requires [Decky Loader](https://decky.xyz/) to already be installed.
 
 - **Auto Install**: One-click installation of vkBasalt + ReShade shaders, directly from Gaming Mode
 - **Shader Manager**: Enable/disable effects with toggles in the Quick Access Menu
-- **Live Parameter Sliders**: Adjust effect parameters without editing config files
+- **Live Parameter Sliders**: Adjust effect parameters without editing config files — covers the 4 built-in effects plus 13 external shaders with simple, purely numeric settings
 - **Toggle Key**: Customizable in-game hotkey
 - **Per-Game Activation**: Copy `ENABLE_VKBASALT=1 %command%` straight to clipboard for a game's launch options
 
@@ -44,35 +44,37 @@ Requires [Decky Loader](https://decky.xyz/) to already be installed.
 #### Light Effects 🟩
 - **Border**: Customizable borders to fix image edges
 - **ColorMatrix**: Color grading via a custom 4x4 color transformation matrix
-- **Curves**: S-curve contrast without clipping
+- **Curves** ⚙️: S-curve contrast without clipping
 - **Daltonize**: Color blindness correction filter
 - **Defring**: Removes chromatic aberration
 - **FilmicPass**: Filmic tone mapping pass for a cinematic look
 - **Monochrome**: Black & white conversion with film presets
-- **Sepia**: Vintage sepia effect
-- **SmartVibrance**: Saturation boost with skin-tone protection
-- **Technicolor**: Classic vibrant film look
-- **Technicolor2**: Alternate take on the three-strip Technicolor look
+- **Sepia** ⚙️: Vintage sepia effect
+- **SmartVibrance** ⚙️: Saturation boost with skin-tone protection
+- **Technicolor** ⚙️: Classic vibrant film look
+- **Technicolor2** ⚙️: Alternate take on the three-strip Technicolor look
 - **Tonemap**: Full tone mapping controls
-- **Vibrance**: Smart saturation boost
+- **Vibrance** ⚙️: Smart saturation boost
 
 #### Medium Effects 🟧
 - **AdaptiveSharpen**: Smart edge-aware sharpening with minimal artifacts
-- **Cartoon**: Cartoon-like edge enhancement
+- **Cartoon** ⚙️: Cartoon-like edge enhancement
 - **Comic**: Comic book style edge lines and halftone shading
 - **DPX**: Film-style color grading
-- **FilmicAnamorphSharpen**: Sharpening with an anamorphic lens-flare style streak
-- **GaussianBlur**: Standard Gaussian blur
-- **LumaSharpen**: Luminance-based detail enhancement
+- **FilmicAnamorphSharpen** ⚙️: Sharpening with an anamorphic lens-flare style streak
+- **GaussianBlur** ⚙️: Standard Gaussian blur
+- **LumaSharpen** ⚙️: Luminance-based detail enhancement
 - **Nostalgia**: Retro gaming visual style
-- **Vignette**: Darkened edges, camera lens effect
+- **Vignette** ⚙️: Darkened edges, camera lens effect
 
 #### Heavy Effects 🟥
-- **4xBRZ**: Complex pixel art upscaling for retro games
+- **4xBRZ** ⚙️: Complex pixel art upscaling for retro games
 - **Clarity**: Advanced sharpening with blur masking
 - **CRT**: Simulates an old CRT monitor
-- **FakeHDR**: Simulates HDR with bloom
+- **FakeHDR** ⚙️: Simulates HDR with bloom
 - **HQ4X**: HQ4x pixel art upscaling for retro games
+
+⚙️ = adjustable parameter sliders available in the plugin.
 
 Note: **Comic** and **FilmicAnamorphSharpen** use the scene depth buffer. The plugin enables vkBasalt's `depthCapture` automatically whenever one of them is active, and disables it otherwise — no manual setting needed.
 
