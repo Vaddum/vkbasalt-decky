@@ -16,7 +16,7 @@ Requires [Decky Loader](https://decky.xyz/) to already be installed.
 ## Key Features
 
 - **Auto Install**: One-click installation of vkBasalt + ReShade shaders, directly from Gaming Mode
-- **Profiles**: Create as many named configurations as you like — per game ("Godfall") or per category ("Pixel Art") — each with its own shaders, built-in sliders, and toggle key
+- **Profiles**: Create as many named configurations as you like, each with its own shaders, built-in sliders, and toggle key
 - **Shader Manager**: Enable/disable effects with toggles in the Quick Access Menu, grouped into collapsible Built-in / Light / Medium / Heavy sections
 - **Live Parameter Sliders**: Adjust effect parameters without editing config files — covers the 4 built-in effects plus 18 external shaders with simple, purely numeric settings
 - **Toggle Key**: Customizable in-game hotkey, saved per profile
