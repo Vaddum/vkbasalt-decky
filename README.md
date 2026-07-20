@@ -16,10 +16,11 @@ Requires [Decky Loader](https://decky.xyz/) to already be installed.
 ## Key Features
 
 - **Auto Install**: One-click installation of vkBasalt + ReShade shaders, directly from Gaming Mode
-- **Shader Manager**: Enable/disable effects with toggles in the Quick Access Menu
-- **Live Parameter Sliders**: Adjust effect parameters without editing config files — covers the 4 built-in effects plus 13 external shaders with simple, purely numeric settings
-- **Toggle Key**: Customizable in-game hotkey
-- **Per-Game Activation**: Copy `ENABLE_VKBASALT=1 %command%` straight to clipboard for a game's launch options
+- **Profiles**: Create as many named configurations as you like — per game ("Godfall") or per category ("Pixel Art") — each with its own shaders, built-in sliders, and toggle key
+- **Shader Manager**: Enable/disable effects with toggles in the Quick Access Menu, grouped into collapsible Built-in / Light / Medium / Heavy sections
+- **Live Parameter Sliders**: Adjust effect parameters without editing config files — covers the 4 built-in effects plus 18 external shaders with simple, purely numeric settings
+- **Toggle Key**: Customizable in-game hotkey, saved per profile
+- **Per-Profile Activation**: Copy the exact launch option for the active profile straight to clipboard — `ENABLE_VKBASALT=1 %command%` for the default profile, or `VKBASALT_CONFIG_FILE="..." ENABLE_VKBASALT=1 %command%` for a named one
 
 ### vkBasalt Built-in Effects 🟦
 
@@ -42,13 +43,13 @@ Requires [Decky Loader](https://decky.xyz/) to already be installed.
 ### Supported External Effects (ReShade)
 
 #### Light Effects 🟩
-- **Border**: Customizable borders to fix image edges
-- **ColorMatrix**: Color grading via a custom 4x4 color transformation matrix
+- **Border** ⚙️: Customizable borders to fix image edges
+- **ColorMatrix** ⚙️: Color grading via a custom 4x4 color transformation matrix
 - **Curves** ⚙️: S-curve contrast without clipping
 - **Daltonize**: Color blindness correction filter
 - **Defring**: Removes chromatic aberration
 - **FilmicPass**: Filmic tone mapping pass for a cinematic look
-- **Monochrome**: Black & white conversion with film presets
+- **Monochrome** ⚙️: Black & white conversion with film presets
 - **Sepia** ⚙️: Vintage sepia effect
 - **SmartVibrance** ⚙️: Saturation boost with skin-tone protection
 - **Technicolor** ⚙️: Classic vibrant film look
@@ -60,7 +61,7 @@ Requires [Decky Loader](https://decky.xyz/) to already be installed.
 - **AdaptiveSharpen**: Smart edge-aware sharpening with minimal artifacts
 - **Cartoon** ⚙️: Cartoon-like edge enhancement
 - **Comic**: Comic book style edge lines and halftone shading
-- **DPX**: Film-style color grading
+- **DPX** ⚙️: Film-style color grading
 - **FilmicAnamorphSharpen** ⚙️: Sharpening with an anamorphic lens-flare style streak
 - **GaussianBlur** ⚙️: Standard Gaussian blur
 - **LumaSharpen** ⚙️: Luminance-based detail enhancement
@@ -69,7 +70,7 @@ Requires [Decky Loader](https://decky.xyz/) to already be installed.
 
 #### Heavy Effects 🟥
 - **4xBRZ** ⚙️: Complex pixel art upscaling for retro games
-- **Clarity**: Advanced sharpening with blur masking
+- **Clarity** ⚙️: Advanced sharpening with blur masking
 - **CRT**: Simulates an old CRT monitor
 - **FakeHDR** ⚙️: Simulates HDR with bloom
 - **HQ4X**: HQ4x pixel art upscaling for retro games
@@ -82,19 +83,21 @@ Note: **Comic** and **FilmicAnamorphSharpen** use the scene depth buffer. The pl
 
 ### Quick Access Menu
 
-- **Built-in Effects**: Toggle CAS/FXAA/SMAA/DLS, sliders appear when an effect is enabled
-- **External Shaders**: Toggle any `.fx` shader found in `~/.config/reshade/Shaders`
-- **Settings**: Toggle key, copy launch option, uninstall
+- **Profiles**: Switch between configurations with one tap, create a new one by typing a name, delete the active one (except Default)
+- **Built-in Effects**: Collapsible section — CAS/FXAA/SMAA/DLS with sliders once enabled
+- **External Shaders**: Collapsible Light / Medium / Heavy sections, sorted alphabetically; toggle any `.fx` shader found in `~/.config/reshade/Shaders`
+- **Settings**: Toggle key, copy launch option for the active profile, uninstall
 
 ### In-Game Controls
 
 **Toggle Effects**: Press the configured key (default: Home)
 
-Effects need a game restart to be activated.
+Effects activate in real-time, no restart required.
 
 ## File Locations
 
-- **Configuration**: `~/.config/vkBasalt/vkBasalt.conf`
+- **Configuration (Default profile)**: `~/.config/vkBasalt/vkBasalt.conf`
+- **Named profiles**: `~/.config/vkBasalt/profiles/<name>.conf`
 - **Shaders**: `~/.config/reshade/Shaders/`
 - **Libraries**: `~/.local/lib/libvkbasalt.so` and `~/.local/lib32/libvkbasalt.so`
 - **Plugin**: `~/homebrew/plugins/vkbasalt-manager/`
