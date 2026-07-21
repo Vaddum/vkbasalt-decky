@@ -108,7 +108,7 @@ Note: **Comic** and **FilmicAnamorphSharpen** use the scene depth buffer. The pl
 
 **Toggle Effects**: Press the configured key (default: Home)
 
-Effects activate in real-time, no restart required.
+Restart required to activate effects!
 
 ## File Locations
 
