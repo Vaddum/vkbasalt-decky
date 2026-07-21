@@ -13,16 +13,21 @@ Requires [Decky Loader](https://decky.xyz/) to already be installed.
 3. Select the ZIP
 4. Open the Quick Access Menu, find **vkBasalt Manager**, and install vkBasalt from there
 
+![Profiles and collapsed categories overview](screenshots/profiles.png)
+
 ## Key Features
 
 - **Auto Install**: One-click installation of vkBasalt + ReShade shaders, directly from Gaming Mode
-- **Profiles**: Create as many named configurations as you like, each with its own shaders, built-in sliders, and toggle key
+- **Profiles**: Create as many named configurations as you like — per game ("Godfall") or per category ("Pixel Art") — each with its own shaders, built-in sliders, and toggle key
 - **Shader Manager**: Enable/disable effects with toggles in the Quick Access Menu, grouped into collapsible Built-in / Light / Medium / Heavy sections
 - **Live Parameter Sliders**: Adjust effect parameters without editing config files — covers the 4 built-in effects plus 18 external shaders with simple, purely numeric settings
 - **Toggle Key**: Customizable in-game hotkey, saved per profile
 - **Per-Profile Activation**: Copy the exact launch option for the active profile straight to clipboard — `ENABLE_VKBASALT=1 %command%` for the default profile, or `VKBASALT_CONFIG_FILE="..." ENABLE_VKBASALT=1 %command%` for a named one
 
 ### vkBasalt Built-in Effects 🟦
+
+![Built-in Effects expanded with sliders](screenshots/builtin-effects.png)
+
 
 #### CAS
 - **Sharpness** (0.0-1.0, default: 0.4): Sharpening intensity
@@ -43,36 +48,45 @@ Requires [Decky Loader](https://decky.xyz/) to already be installed.
 ### Supported External Effects (ReShade)
 
 #### Light Effects 🟩
-- **Border** ⚙️: Customizable borders to fix image edges
-- **ColorMatrix** ⚙️: Color grading via a custom 4x4 color transformation matrix
-- **Curves** ⚙️: S-curve contrast without clipping
+
+![Light External Effects expanded](screenshots/light-effects.png)
+
+- **Border** ⚙️ (Default: 2.35): Customizable borders to fix image edges
+- **ColorMatrix** ⚙️ (Default: 1.0): Color grading via a custom 4x4 color transformation matrix
+- **Curves** ⚙️ (Default: 0.65): S-curve contrast without clipping
 - **Daltonize**: Color blindness correction filter
 - **Defring**: Removes chromatic aberration
 - **FilmicPass**: Filmic tone mapping pass for a cinematic look
-- **Monochrome** ⚙️: Black & white conversion with film presets
-- **Sepia** ⚙️: Vintage sepia effect
-- **SmartVibrance** ⚙️: Saturation boost with skin-tone protection
-- **Technicolor** ⚙️: Classic vibrant film look
-- **Technicolor2** ⚙️: Alternate take on the three-strip Technicolor look
+- **Monochrome** ⚙️ (Default: 0.0): Black & white conversion with film presets
+- **Sepia** ⚙️ (Default: 0.58): Vintage sepia effect
+- **SmartVibrance** ⚙️ (Default: 0.5): Saturation boost with skin-tone protection
+- **Technicolor** ⚙️ (Default: 0.4): Classic vibrant film look
+- **Technicolor2** ⚙️ (Default: 1.0): Alternate take on the three-strip Technicolor look
 - **Tonemap**: Full tone mapping controls
-- **Vibrance** ⚙️: Smart saturation boost
+- **Vibrance** ⚙️ (Default: 0.15): Smart saturation boost
 
 #### Medium Effects 🟧
+
+![Medium External Effects expanded](screenshots/medium-effects.png)
+
 - **AdaptiveSharpen**: Smart edge-aware sharpening with minimal artifacts
-- **Cartoon** ⚙️: Cartoon-like edge enhancement
+- **Cartoon** ⚙️ (Default: 1.5): Cartoon-like edge enhancement
 - **Comic**: Comic book style edge lines and halftone shading
-- **DPX** ⚙️: Film-style color grading
-- **FilmicAnamorphSharpen** ⚙️: Sharpening with an anamorphic lens-flare style streak
-- **GaussianBlur** ⚙️: Standard Gaussian blur
-- **LumaSharpen** ⚙️: Luminance-based detail enhancement
+- **DPX** ⚙️ (Default: 0.20): Film-style color grading
+- **FilmicAnamorphSharpen** ⚙️ (Default: 60.0): Sharpening with an anamorphic lens-flare style streak
+- **GaussianBlur** ⚙️ (Default: Strength 0.3, Radius 1): Standard Gaussian blur
+- **LumaSharpen** ⚙️ (Default: 0.65): Luminance-based detail enhancement
 - **Nostalgia**: Retro gaming visual style
-- **Vignette** ⚙️: Darkened edges, camera lens effect
+- **Vignette** ⚙️ (Default: Amount -1.0, Radius 2.0): Darkened edges, camera lens effect
 
 #### Heavy Effects 🟥
-- **4xBRZ** ⚙️: Complex pixel art upscaling for retro games
-- **Clarity** ⚙️: Advanced sharpening with blur masking
+
+![Heavy External Effects expanded](screenshots/heavy-effects.png)
+
+- **4xBRZ** ⚙️ (Default: 4.0): Complex pixel art upscaling for retro games
+- **Clarity** ⚙️ (Default: 0.4): Advanced sharpening with blur masking
 - **CRT**: Simulates an old CRT monitor
-- **FakeHDR** ⚙️: Simulates HDR with bloom
+- **FakeHDR** ⚙️ (Default: HDR Power 1.30, Radius 0.793): Simulates HDR with bloom
 - **HQ4X**: HQ4x pixel art upscaling for retro games
 
 ⚙️ = adjustable parameter sliders available in the plugin.
@@ -87,6 +101,8 @@ Note: **Comic** and **FilmicAnamorphSharpen** use the scene depth buffer. The pl
 - **Built-in Effects**: Collapsible section — CAS/FXAA/SMAA/DLS with sliders once enabled
 - **External Shaders**: Collapsible Light / Medium / Heavy sections, sorted alphabetically; toggle any `.fx` shader found in `~/.config/reshade/Shaders`
 - **Settings**: Toggle key, copy launch option for the active profile, uninstall
+
+![Settings: toggle key, copy launch option, uninstall, reset](screenshots/settings.png)
 
 ### In-Game Controls
 
